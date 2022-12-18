@@ -19,7 +19,6 @@ public class PerfilUsuarioBean implements Serializable {
 
 	public void atualizar() {
 		System.out.println("Data nascimento: " + this.dataNascimento);
-
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Perfil atualizado!"));
 	}
 	

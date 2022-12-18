@@ -64,8 +64,9 @@
 
 	</dependencies>
 
+
 	<!-- TomEE Web Profile -->
-	<profiles>
+	 <profiles>
 		<profile>
 			<id>tomee</id>
 			<activation>
@@ -76,24 +77,37 @@
 					<plugin>
 						<groupId>org.apache.tomee.maven</groupId>
 						<artifactId>tomee-maven-plugin</artifactId>
-						<version>8.0.0-M2</version>
+						<version>8.0.9</version>
 						<executions>
 							<execution>
 								<id>executable-jar</id>
 								<phase>package</phase>
 								<goals>
 									<goal>exec</goal>
+
 								</goals>
 							</execution>
 						</executions>
+
 						<configuration>
+							<tomeeVersion>8.0.9</tomeeVersion>
 							<context>ROOT</context>
 							<tomeeClassifier>webprofile</tomeeClassifier>
-							<debug>true</debug>
+							<debug>false</debug>
 							<debugPort>5005</debugPort>
 							<tomeeShutdownPort>8001</tomeeShutdownPort>
 							<tomeeAjpPort>8002</tomeeAjpPort>
 							<tomeeHttpPort>8090</tomeeHttpPort>
+							<synchronization>
+								<extensions>
+									<extension>.class</extension>
+							</extensions>
+							</synchronization>
+							<reloadOnUpdate>true</reloadOnUpdate>
+							<systemVariables>
+								<openejb.system.apps>true</openejb.system.apps>
+								<tomee.serialization.class.blacklist>-</tomee.serialization.class.blacklist>
+							</systemVariables>
 						</configuration>
 					</plugin>
 
@@ -101,6 +115,7 @@
 			</build>
 		</profile>
 	</profiles>
+
 
 	<!-- Maven compilação java 12 -->
 	<build>
